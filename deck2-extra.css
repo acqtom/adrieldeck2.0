@@ -1,0 +1,437 @@
+/* Deck 2 additions — layered on top of styles.css */
+
+:root {
+  --blue: #5b9bd5;
+  --red: #f87171;
+}
+
+.accent { color: var(--gold); }
+
+/* ---------- Icon badges ---------- */
+
+.icon-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  background: rgba(224, 169, 64, 0.07);
+  flex-shrink: 0;
+}
+
+.icon-badge svg { width: 28px; height: 28px; }
+
+.icon-badge.sm { width: 44px; height: 44px; border-width: 1.5px; }
+.icon-badge.sm svg { width: 20px; height: 20px; }
+
+.icon-badge.blue { border-color: var(--blue); color: var(--blue); background: rgba(91, 155, 213, 0.08); }
+.icon-badge.green { border-color: var(--green); color: var(--green); background: rgba(74, 222, 128, 0.08); }
+
+/* ---------- Phase overview row ---------- */
+
+.phase-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.phase-node {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  position: relative;
+}
+
+.phase-node:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--gold-dim);
+  z-index: 0;
+}
+
+.phase-node .icon-badge { position: relative; z-index: 1; background: var(--bg); }
+
+.phase-node h3 { font-size: 17px; font-weight: 700; color: var(--text); }
+.phase-node p { font-size: 13.5px; color: var(--text-dim); }
+
+/* ---------- Timeline track ---------- */
+
+.timeline-track {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.tl-seg { height: 6px; border-radius: 3px; flex: 1; }
+.tl-seg.dim { background: var(--border); }
+.tl-seg.gold { background: var(--gold); }
+.tl-seg.green { background: var(--green); }
+
+.tl-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin: 0 8px;
+  background: var(--bg);
+}
+
+.tl-icon svg { width: 22px; height: 22px; }
+
+.tl-icon.done { width: 66px; height: 66px; background: var(--green); border-color: var(--green); color: #08130c; }
+
+.timeline-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.timeline-labels .done { color: var(--green); font-weight: 700; }
+
+/* ---------- Sticky note mockup ---------- */
+
+.sticky-note {
+  background: #f3efe6;
+  color: #1c1a16;
+  border-radius: 10px;
+  padding: 28px 30px;
+  max-width: 460px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  position: relative;
+}
+
+.sn-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: 1px solid #c9c4b8;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b6558;
+}
+
+.sn-brand {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b6558;
+  margin-bottom: 10px;
+}
+
+.sn-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 16px;
+  border-bottom: 2px solid #1c1a16;
+  padding-bottom: 12px;
+}
+
+.sn-section-label {
+  color: #a9781f;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 16px 0 6px;
+}
+
+.sn-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px dashed #c9c4b8;
+  padding: 7px 0;
+  font-size: 13px;
+}
+
+.sn-row .lbl { color: #4a453c; }
+.sn-row .val { color: #1a3d8f; font-weight: 700; text-align: right; }
+.sn-row.done .val { color: #1a7a3d; }
+.sn-row .chk { color: #1a7a3d; font-weight: 800; margin-right: 6px; }
+
+.sn-sold {
+  position: absolute;
+  top: -18px;
+  right: -14px;
+  border: 3px solid var(--green);
+  color: var(--green);
+  font-weight: 900;
+  font-size: 20px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  transform: rotate(8deg);
+  background: rgba(5, 4, 3, 0.75);
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Comparison table ---------- */
+
+.compare-table { display: flex; flex-direction: column; gap: 12px; }
+
+.compare-head, .compare-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.compare-head div { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.compare-head .own { color: var(--red); }
+.compare-head .ib { color: var(--green); }
+
+.compare-row .rowlabel { font-size: 15px; font-weight: 700; color: var(--text); }
+.compare-row .rowlabel .sub { display: block; font-size: 12px; font-weight: 500; color: var(--text-dim); margin-top: 2px; }
+
+.compare-cell {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.compare-cell .big { font-size: 15px; font-weight: 800; color: var(--text); }
+.compare-cell .small { font-size: 11.5px; color: var(--text-dim); margin-top: 3px; }
+
+.compare-cell.own { border-color: rgba(248, 113, 113, 0.35); }
+.compare-cell.ib { border-color: rgba(74, 222, 128, 0.35); }
+.compare-cell.save {
+  background: rgba(74, 222, 128, 0.08);
+  border-color: rgba(74, 222, 128, 0.4);
+}
+.compare-cell.save .big { color: var(--green); font-size: 16px; }
+
+/* ---------- Step list (numbered, connected) ---------- */
+
+.step-list { display: flex; flex-direction: column; }
+
+.step-item {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.step-item:last-child { padding-bottom: 0; }
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #1c1509;
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.step-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.step-body h3 { font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.step-body p { font-size: 14px; color: var(--text-dim); }
+
+/* ---------- A-to-Z module list ---------- */
+
+.module-list { display: flex; flex-direction: column; }
+
+.module-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.module-item:last-child { border-bottom: none; }
+
+.module-left { display: flex; align-items: center; gap: 18px; }
+.module-num { font-size: 13px; font-weight: 700; color: var(--gold-dim); width: 22px; flex-shrink: 0; }
+.module-title { font-size: 15.5px; font-weight: 700; color: var(--text); }
+
+.module-play {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.module-play svg { width: 12px; height: 12px; }
+
+/* ---------- Fund allocation bar ---------- */
+
+.fund-chart {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.fund-bar {
+  width: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.fund-seg.capital { background: var(--gold); }
+.fund-seg.loan { background: #d9d4c9; }
+.fund-seg.reserve { background: var(--green); }
+
+.fund-legend { display: flex; flex-direction: column; gap: 22px; }
+.fund-legend-item { display: flex; align-items: flex-start; gap: 12px; }
+.fund-swatch { width: 14px; height: 14px; border-radius: 3px; margin-top: 4px; flex-shrink: 0; }
+.fund-swatch.capital { background: var(--gold); }
+.fund-swatch.loan { background: #d9d4c9; }
+.fund-swatch.reserve { background: var(--green); }
+.fund-legend-item h3 { font-size: 16px; font-weight: 700; color: var(--text); }
+.fund-legend-item p { font-size: 13.5px; color: var(--text-dim); margin-top: 2px; }
+
+/* ---------- Recap pill row ---------- */
+
+.pill-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.pill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 999px;
+  padding: 12px 22px 12px 12px;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ---------- Small badge pill ---------- */
+
+.badge-pill {
+  display: inline-flex;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  width: fit-content;
+}
+
+/* ---------- Warning line ---------- */
+
+.warning-line { color: var(--red); font-weight: 800; font-size: 16px; }
+
+/* ---------- Coach badge over photo ---------- */
+
+.coach-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(10, 9, 8, 0.85);
+  border-left: 3px solid var(--gold);
+  padding: 10px 18px;
+  border-radius: 8px;
+  z-index: 2;
+}
+.coach-badge .role { font-size: 11px; color: var(--text-dim); }
+.coach-badge .name { font-size: 16px; font-weight: 800; color: var(--text); }
+
+/* ---------- Off-market pill (bottom-left over photo) ---------- */
+
+.img-tag.tag-bottom { top: auto; bottom: 14px; }
+.img-tag.tag-live::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  margin-right: 8px;
+}
+
+/* ---------- Fit / wondering grid variant with icon-badge headers ---------- */
+
+.fit-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.fit-card-head h3 { font-size: 19px; font-weight: 800; }
+.fit-card.green-tint { background: rgba(74, 222, 128, 0.06); border-color: rgba(74, 222, 128, 0.3); }
+
+/* ---------- Photo mosaic ---------- */
+
+.photo-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.3fr 1fr;
+  gap: 10px;
+  height: 100%;
+  min-height: 420px;
+}
+
+.photo-mosaic .m1 { grid-column: 1 / 3; }
+
+/* ---------- Cross-deck link (inside Contents panel) ---------- */
+
+.contents-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  border-radius: 10px 10px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+
+.contents-switch:hover {
+  background: rgba(224, 169, 64, 0.08);
+}
+
+.contents-switch svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .phase-row { flex-direction: column; gap: 28px; }
+  .phase-node:not(:last-child)::after { display: none; }
+  .compare-head, .compare-row { grid-template-columns: 1fr; }
+  .fund-chart { flex-direction: column; }
+}
